@@ -21,3 +21,7 @@ drf-yasg
 
 # کار با تصاویر (مثلا آپلود عکس)
 Pillow
+
+requests
+
+instaloader
