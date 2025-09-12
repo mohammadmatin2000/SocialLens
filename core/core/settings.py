@@ -30,7 +30,8 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     'accounts',
-    'instagram'
+    'instagram',
+    'facebook',
 ]
 
 MIDDLEWARE = [
