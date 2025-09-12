@@ -20,7 +20,7 @@ services:
     volumes:
       - ./core:/usr/src/app
     working_dir: /usr/src/app
-    command: django-admin startproject core
+    command: python manage.py runserver 0.0.0.0:8000
     environment:
       PG_USER: username
       PG_PASSWORD: password
