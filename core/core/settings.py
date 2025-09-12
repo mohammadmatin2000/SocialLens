@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'accounts',
     'instagram',
     'facebook',
+    'youtube',
+    'twitter',
 ]
 
 MIDDLEWARE = [

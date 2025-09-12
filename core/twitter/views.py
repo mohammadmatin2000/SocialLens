@@ -2,7 +2,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import random
 # ======================================================================================================================
-class InstagramAPIView(APIView):
+class TwitterAPIView(APIView):
     def get(self, request):
         # دیتای الکی (تستی) برمی‌گردونیم
         data = {

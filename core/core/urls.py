@@ -23,6 +23,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('instagram/', include('instagram.urls')),
     path('facebook/', include('facebook.urls')),
+    path('youtube/', include('youtube.urls')),
+    path('twitter/', include('twitter.urls')),
 
     path("api-auth/", include("rest_framework.urls")),
 

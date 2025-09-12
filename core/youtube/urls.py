@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import InstagramAPIView
+from .views import YoutubeAPIView
 # ======================================================================================================================
 urlpatterns = [
-    path('instagram-profile/', InstagramAPIView.as_view(), name='instagram-profile'),
+    path('youtube-profile/', YoutubeAPIView.as_view()),
 ]
 # ======================================================================================================================
