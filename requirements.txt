@@ -1,0 +1,11 @@
+# فریمورک جنگو
+django==4.2
+
+# خواندن متغیرهای محیطی از فایل .env
+python-decouple
+
+# درایور PostgreSQL به همراه باینری‌های مورد نیاز
+psycopg[binary]
+
+# فریمورک REST API جنگو
+djangorestframework

@@ -1,0 +1,45 @@
+services:
+  db:
+    image: postgres
+    container_name: db
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: default_database
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+    expose:
+      - 5432
+    restart: always
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./dockerfiles/dev/django/Dockerfile
+    container_name: backend
+    volumes:
+      - ./core:/usr/src/app
+    working_dir: /usr/src/app
+    command: django-admin startproject core
+    environment:
+      PG_USER: username
+      PG_PASSWORD: password
+      PG_NAME: default_database
+      PG_HOST: db
+      PG_PORT: 5432
+      DEBUG: True
+
+      EMAIL_HOST: smtp.gmail.com
+      EMAIL_PORT: 587
+      EMAIL_HOST_USER: mohammadmatin13872008@gmail.com
+      EMAIL_HOST_PASSWORD: "hizpwqlltslhvomm"
+      EMAIL_USE_TLS: "True"
+      EMAIL_USE_SSL: "False"
+      DOMAIN: 127.0.0.1:8000
+      PROTOCOL: http
+
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+  #  =====================================================================================================================
