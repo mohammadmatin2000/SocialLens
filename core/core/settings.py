@@ -27,6 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'drf_yasg',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -133,3 +135,6 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
 EMAIL_USE_SSL = config("EMAIL_USE_SSL", default=False, cast=bool)
 DEFAULT_FROM_EMAIL = "mohammadmatin13872008@gmail.com"
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 48  # زمان اعتبار لینک بازیابی رمز (48 ساعت)
+
+# مدل کاربر سفارشی
+AUTH_USER_MODEL = "accounts.User"

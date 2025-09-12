@@ -9,3 +9,15 @@ psycopg[binary]
 
 # فریمورک REST API جنگو
 djangorestframework
+
+# JWT برای احراز هویت توکن‌محور
+djangorestframework-simplejwt
+
+# فیلتر کردن داده‌ها در APIها
+django-filter
+
+# تولید مستندات Swagger برای API
+drf-yasg
+
+# کار با تصاویر (مثلا آپلود عکس)
+Pillow
