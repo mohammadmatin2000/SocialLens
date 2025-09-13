@@ -28,6 +28,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_yasg',
+    'corsheaders',
 
     'accounts',
     'instagram',
@@ -44,6 +45,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware'
 ]
 
 ROOT_URLCONF = 'core.urls'
@@ -143,3 +145,8 @@ PASSWORD_RESET_TIMEOUT = 60 * 60 * 48  # زمان اعتبار لینک بازی
 
 # مدل کاربر سفارشی
 AUTH_USER_MODEL = "accounts.User"
+
+CORS_ALLOWED_ORIGINS = [
+  "http://localhost:3000",  # آدرس فرانت
+]
+CORS_ALLOW_ALL_ORIGINS = True

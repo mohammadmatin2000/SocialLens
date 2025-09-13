@@ -25,3 +25,5 @@ Pillow
 requests
 
 instaloader
+
+django-cors-headers
