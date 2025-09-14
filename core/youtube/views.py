@@ -1,14 +1,13 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-import random
+from rest_framework import viewsets
+from .models import YouTubeChannelModel, YouTubeVideoModel
+from .serializers import YouTubeChannelSerializer, YouTubeVideoSerializer
+
 # ======================================================================================================================
-class YoutubeAPIView(APIView):
-    def get(self, request):
-        # دیتای الکی (تستی) برمی‌گردونیم
-        data = {
-            "followers_count": (4000,),
-            "total_likes_last_posts": (200,),
-            "total_views_last_posts": (600,),
-        }
-        return Response(data)
+class YouTubeChannelViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = YouTubeChannelModel.objects.all()
+    serializer_class = YouTubeChannelSerializer
+# ======================================================================================================================
+class YouTubeVideoViewSet(viewsets.ModelViewSet):
+    queryset = YouTubeVideoModel.objects.all()
+    serializer_class = YouTubeVideoSerializer
 # ======================================================================================================================

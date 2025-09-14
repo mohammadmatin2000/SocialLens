@@ -1,7 +1,9 @@
-from django.urls import path
-from .views import InstagramAPIView
+from rest_framework.routers import DefaultRouter
+from .views import InstagramProfileViewSet, InstagramPostViewSet
 # ======================================================================================================================
-urlpatterns = [
-    path('instagram-profile/', InstagramAPIView.as_view(), name='instagram-profile'),
-]
+router = DefaultRouter()
+router.register(r'profiles', InstagramProfileViewSet, basename='profile')
+router.register(r'posts', InstagramPostViewSet, basename='post')
+# ======================================================================================================================
+urlpatterns = router.urls
 # ======================================================================================================================

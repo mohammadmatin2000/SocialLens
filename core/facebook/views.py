@@ -1,14 +1,12 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-import random
+from rest_framework import viewsets
+from .models import FacebookProfile, FacebookPost
+from .serializers import FacebookProfileSerializer, FacebookPostSerializer
 # ======================================================================================================================
-class FacebookAPIView(APIView):
-    def get(self, request):
-        # دیتای الکی (تستی) برمی‌گردونیم
-        data = {
-            "followers_count": (1000,),
-            "total_likes_last_posts": (100,),
-            "total_views_last_posts": (500,),
-        }
-        return Response(data)
+class FacebookProfileViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = FacebookProfile.objects.all()
+    serializer_class = FacebookProfileSerializer
+# ======================================================================================================================
+class FacebookPostViewSet(viewsets.ModelViewSet):
+    queryset = FacebookPost.objects.all()
+    serializer_class = FacebookPostSerializer
 # ======================================================================================================================

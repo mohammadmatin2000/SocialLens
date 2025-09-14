@@ -1,13 +1,13 @@
 from rest_framework import serializers
-from .models import InstagramProfile, InstagramPost
+from .models import FacebookProfile, FacebookPost
 
 # ======================================================================================================================
-class InstagramProfileSerializer(serializers.ModelSerializer):
+class FacebookProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = InstagramProfile
+        model = FacebookProfile
         fields = [
             'id',
-            'username',
+            'name',
             'followers_count',
             'total_likes',
             'total_views',
@@ -17,12 +17,14 @@ class InstagramProfileSerializer(serializers.ModelSerializer):
             'created_date',
             'updated_date',
         ]
+
+
 # ======================================================================================================================
-class InstagramPostSerializer(serializers.ModelSerializer):
-    profile = InstagramProfileSerializer(read_only=True)
+class FacebookPostSerializer(serializers.ModelSerializer):
+    profile = FacebookProfileSerializer(read_only=True)
 
     class Meta:
-        model = InstagramPost
+        model = FacebookPost
         fields = [
             'id',
             'profile',

@@ -1,34 +1,36 @@
 from rest_framework import serializers
-from .models import InstagramProfile, InstagramPost
+from .models import YouTubeChannelModel, YouTubeVideoModel
 
 # ======================================================================================================================
-class InstagramProfileSerializer(serializers.ModelSerializer):
+class YouTubeChannelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = InstagramProfile
+        model = YouTubeChannelModel
         fields = [
             'id',
-            'username',
-            'followers_count',
+            'name',
+            'subscribers_count',
             'total_likes',
             'total_views',
             'total_comments',
             'total_shares',
-            'total_saves',
             'created_date',
             'updated_date',
         ]
+
+
 # ======================================================================================================================
-class InstagramPostSerializer(serializers.ModelSerializer):
-    profile = InstagramProfileSerializer(read_only=True)
+class YouTubeVideoSerializer(serializers.ModelSerializer):
+    channel = YouTubeChannelSerializer(read_only=True)
 
     class Meta:
-        model = InstagramPost
+        model = YouTubeVideoModel
         fields = [
             'id',
-            'profile',
+            'channel',
             'campaign',
             'status',
-            'content',
+            'title',
+            'description',
             'platforms',
             'tags',
             'created_date',

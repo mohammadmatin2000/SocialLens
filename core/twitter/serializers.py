@@ -1,10 +1,10 @@
 from rest_framework import serializers
-from .models import InstagramProfile, InstagramPost
+from .models import TwitterProfileModels, TwitterPostModels
 
 # ======================================================================================================================
-class InstagramProfileSerializer(serializers.ModelSerializer):
+class TwitterProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = InstagramProfile
+        model = TwitterProfileModels
         fields = [
             'id',
             'username',
@@ -18,11 +18,11 @@ class InstagramProfileSerializer(serializers.ModelSerializer):
             'updated_date',
         ]
 # ======================================================================================================================
-class InstagramPostSerializer(serializers.ModelSerializer):
-    profile = InstagramProfileSerializer(read_only=True)
+class TwitterPostSerializer(serializers.ModelSerializer):
+    profile = TwitterProfileSerializer(read_only=True)
 
     class Meta:
-        model = InstagramPost
+        model = TwitterPostModels
         fields = [
             'id',
             'profile',

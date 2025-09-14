@@ -1,7 +1,9 @@
-from django.urls import path
-from .views import FacebookAPIView
+from rest_framework.routers import DefaultRouter
+from .views import FacebookProfileViewSet, FacebookPostViewSet
 # ======================================================================================================================
-urlpatterns = [
-    path('facebook-profile/', FacebookAPIView.as_view()),
-]
+router = DefaultRouter()
+router.register(r'profiles', FacebookProfileViewSet, basename='profile')
+router.register(r'posts', FacebookPostViewSet, basename='post')
+# ======================================================================================================================
+urlpatterns = router.urls
 # ======================================================================================================================
