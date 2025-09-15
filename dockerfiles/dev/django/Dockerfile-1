@@ -4,7 +4,7 @@ FROM node:20
 # مشخص کردن مسیر کاری داخل کانتینر
 WORKDIR /usr/src/frontend
 
-# کپی محتویات فولدر frontend به داخل کانتینر
+# کپی محتویات فولدر frontends به داخل کانتینر
 COPY frontend/package*.json ./
 COPY frontend/. ./
 
