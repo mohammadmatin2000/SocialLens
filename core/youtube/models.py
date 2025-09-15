@@ -29,7 +29,7 @@ class YouTubeVideoModel(models.Model):
         ('failed', 'ناموفق'),
     ]
 
-    channel = models.ForeignKey(YouTubeChannelModel, on_delete=models.CASCADE, related_name='videos', verbose_name="کانال")
+    channel = models.ForeignKey(YouTubeChannelModel, on_delete=models.CASCADE, related_name='videos', verbose_name="کانال",null=True,blank=True)
     campaign = models.CharField(max_length=255, verbose_name="کمپین", default="بدون نام")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft', verbose_name="وضعیت")
     title = models.CharField(max_length=255, verbose_name="عنوان ویدیو", default="بدون عنوان")

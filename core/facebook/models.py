@@ -30,7 +30,7 @@ class FacebookPost(models.Model):
         ('failed', 'ناموفق'),
     ]
 
-    profile = models.ForeignKey(FacebookProfile, on_delete=models.CASCADE, related_name='posts', verbose_name="پروفایل")
+    profile = models.ForeignKey(FacebookProfile, on_delete=models.CASCADE, related_name='posts', verbose_name="پروفایل",null=True,blank=True)
     campaign = models.CharField(max_length=255, verbose_name="کمپین", default="بدون نام")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft', verbose_name="وضعیت")
     content = models.TextField(verbose_name="متن پست", default="بدون محتوا")
