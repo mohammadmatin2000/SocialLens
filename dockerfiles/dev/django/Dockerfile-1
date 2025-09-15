@@ -2,11 +2,11 @@
 FROM node:20
 
 # مشخص کردن مسیر کاری داخل کانتینر
-WORKDIR /usr/src/frontend
+WORKDIR /usr/src/frontends
 
 # کپی محتویات فولدر frontends به داخل کانتینر
-COPY frontend/package*.json ./
-COPY frontend/. ./
+COPY frontends/package*.json ./
+COPY frontends/. ./
 
 # نصب dependencies
 RUN npm install
