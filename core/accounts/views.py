@@ -11,17 +11,16 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from django.conf import settings
 from django.utils.http import urlsafe_base64_decode
 from rest_framework.views import APIView
+from rest_framework import viewsets
 from django.contrib.auth.hashers import make_password
 from .serializers import (
     RegisterSerializer,
     EmailSerializer,
     SetNewPasswordSerializer,
     ActivationSerializer,
+    UserListSerializer,
 )
-
 User = get_user_model()
-
-
 # ======================================================================================================================
 class RegisterViews(generics.GenericAPIView):
     serializer_class = RegisterSerializer
@@ -47,8 +46,6 @@ class RegisterViews(generics.GenericAPIView):
                 "detail": "ثبت‌نام با موفقیت انجام شد. لطفا ایمیل خود را برای فعالسازی چک کنید."
             }
         )
-
-
 # ======================================================================================================================
 class RequestPasswordResetEmail(generics.GenericAPIView):
     serializer_class = EmailSerializer
@@ -76,9 +73,7 @@ class RequestPasswordResetEmail(generics.GenericAPIView):
         return Response(
             {"detail": "ایمیل بازیابی رمز ارسال شد."}, status=status.HTTP_200_OK
         )
-
-
-# ====================================================================
+# ======================================================================================================================
 class PasswordResetConfirmView(APIView):
     serializer_class = SetNewPasswordSerializer
 
@@ -107,8 +102,6 @@ class PasswordResetConfirmView(APIView):
                 {"error": "لینک معتبر نیست یا منقضی شده."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-
-
 # ======================================================================================================================
 class ActivateAccount(APIView):
     serializer_class = ActivationSerializer
@@ -137,6 +130,8 @@ class ActivateAccount(APIView):
                 {"error": "لینک فعال‌سازی نامعتبر است یا منقضی شده."},
                 status=status.HTTP_400_BAD_REQUEST,
             )
-
-
+# ======================================================================================================================
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = User.objects.all().select_related("user_profile")
+    serializer_class = UserListSerializer
 # ======================================================================================================================
