@@ -9,6 +9,6 @@ router.register(r'engagements', TwitterEngagementViewSet, basename='engagement')
 # ======================================================================================================================
 urlpatterns = [
     path('', include(router.urls)),
-    path('AnalyticsView/', TwitterAnalyticsView.as_view(), name='instagram-dashboard'),
+    path('analyticsview/', TwitterAnalyticsView.as_view(), name='instagram-dashboard'),
 ]
 # ======================================================================================================================

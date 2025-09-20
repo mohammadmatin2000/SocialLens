@@ -9,6 +9,6 @@ router.register(r'engagements', YouTubeEngagementViewSet, basename='engagement')
 # ======================================================================================================================
 urlpatterns = [
     path('', include(router.urls)),
-    path('AnalyticsView/', YouTubeAnalyticsView.as_view(), name='instagram-dashboard'),
+    path('analyticsview/', YouTubeAnalyticsView.as_view(), name='instagram-dashboard'),
 ]
 # ======================================================================================================================

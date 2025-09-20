@@ -9,6 +9,6 @@ router.register(r'engagements', FacebookEngagementViewSet, basename='engagement'
 # ======================================================================================================================
 urlpatterns = [
     path('', include(router.urls)),
-    path('AnalyticsView/', FacebookAnalyticsView.as_view(), name='instagram-dashboard'),
+    path('analyticsview/', FacebookAnalyticsView.as_view(), name='instagram-dashboard'),
 ]
 # ======================================================================================================================

@@ -11,6 +11,6 @@ router.register(r'engagements', EngagementViewSet, basename='engagement')
 # ======================================================================================================================
 urlpatterns = [
     path('', include(router.urls)),
-    path('AnalyticsView/', InstagramAnalyticsView.as_view(), name='instagram-dashboard'),
+    path('analyticsview/', InstagramAnalyticsView.as_view(), name='instagram-dashboard'),
 ]
 # ======================================================================================================================

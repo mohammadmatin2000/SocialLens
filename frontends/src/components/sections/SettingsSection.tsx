@@ -13,7 +13,7 @@ export function SettingsSection() {
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4">
-            <span>:تم</span>
+            <span>تم :</span>
             <ThemeToggler />
           </div>
         </CardContent>

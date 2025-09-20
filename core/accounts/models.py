@@ -8,11 +8,9 @@ from django.db import models
 
 # ======================================================================================================================
 class UserType(models.IntegerChoices):
-    customer = 1, _("customer")
-    admin = 2, _("admin")
-    superuser = 3, _("superuser")
-
-
+    customer = 1, _("مشتری")
+    admin = 2, _("مدیر")
+    superuser = 3, _("مدیر کل")
 # ======================================================================================================================
 class UserManager(BaseUserManager):
     """

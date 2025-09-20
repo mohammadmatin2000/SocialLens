@@ -27,10 +27,10 @@ export function AnalyticsSection() {
 
   useEffect(() => {
     Promise.all([
-      fetch("http://127.0.0.1:8000/facebook/AnalyticsView/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "facebook" }))),
-      fetch("http://127.0.0.1:8000/instagram/AnalyticsView/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "instagram" }))),
-      fetch("http://127.0.0.1:8000/twitter/AnalyticsView/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "twitter" }))),
-      fetch("http://127.0.0.1:8000/youtube/AnalyticsView/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "youtube" }))),
+      fetch("http://127.0.0.1:8000/facebook/analyticsview/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "facebook" }))),
+      fetch("http://127.0.0.1:8000/instagram/analyticsview/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "instagram" }))),
+      fetch("http://127.0.0.1:8000/twitter/analyticsview/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "twitter" }))),
+      fetch("http://127.0.0.1:8000/youtube/analyticsview/").then(res => res.json()).then(data => data.map((d: any) => ({ ...d, platform: "youtube" }))),
     ])
       .then(([fb, ig, tw, yt]) => {
         setAnalytics([...fb, ...ig, ...tw, ...yt]);
