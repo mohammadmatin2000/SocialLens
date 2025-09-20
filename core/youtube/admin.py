@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import YouTubeChannelModel, YouTubeVideoModel
+from .models import YouTubeChannelModel, YouTubeVideoModel, YouTubeEngagement
 
 # ======================================================================================================================
 @admin.register(YouTubeChannelModel)
@@ -17,7 +17,6 @@ class YouTubeChannelAdmin(admin.ModelAdmin):
     search_fields = ('name',)
     ordering = ('-created_date',)
 
-
 # ======================================================================================================================
 @admin.register(YouTubeVideoModel)
 class YouTubeVideoAdmin(admin.ModelAdmin):
@@ -31,5 +30,13 @@ class YouTubeVideoAdmin(admin.ModelAdmin):
     )
     list_filter = ('status', 'platforms')
     search_fields = ('channel__name', 'campaign', 'title', 'tags', 'description')
+    ordering = ('-created_date',)
+
+# ======================================================================================================================
+@admin.register(YouTubeEngagement)
+class YouTubeEngagementAdmin(admin.ModelAdmin):
+    list_display = ('video', 'user', 'type', 'content', 'created_date')
+    list_filter = ('type',)
+    search_fields = ('user', 'video__title', 'content')
     ordering = ('-created_date',)
 # ======================================================================================================================

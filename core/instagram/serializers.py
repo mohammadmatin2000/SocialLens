@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import InstagramProfile, InstagramPost
+from .models import InstagramProfile, InstagramPost, Engagement
 
 # ======================================================================================================================
 class InstagramProfileSerializer(serializers.ModelSerializer):
@@ -17,6 +17,8 @@ class InstagramProfileSerializer(serializers.ModelSerializer):
             'created_date',
             'updated_date',
         ]
+
+
 # ======================================================================================================================
 class InstagramPostSerializer(serializers.ModelSerializer):
     profile = InstagramProfileSerializer(read_only=True)
@@ -33,5 +35,21 @@ class InstagramPostSerializer(serializers.ModelSerializer):
             'tags',
             'created_date',
             'updated_date',
+        ]
+
+
+# ======================================================================================================================
+class EngagementSerializer(serializers.ModelSerializer):
+    post = InstagramPostSerializer(read_only=True)
+
+    class Meta:
+        model = Engagement
+        fields = [
+            'id',
+            'post',
+            'user',
+            'type',
+            'content',
+            'created_date',
         ]
 # ======================================================================================================================

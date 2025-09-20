@@ -18,14 +18,6 @@ export function SettingsSection() {
           </div>
         </CardContent>
       </Card>
-      <Card className="mt-6">
-        <CardHeader>
-          <CardTitle>Account</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <span className="text-muted-foreground">Account settings and integrations coming soon.</span>
-        </CardContent>
-      </Card>
     </div>
   );
 }

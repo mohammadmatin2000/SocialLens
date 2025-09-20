@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import InstagramProfile, InstagramPost
+from .models import InstagramProfile, InstagramPost, Engagement
 
 # ======================================================================================================================
 @admin.register(InstagramProfile)
@@ -31,5 +31,20 @@ class InstagramPostAdmin(admin.ModelAdmin):
     )
     list_filter = ('status', 'platforms')
     search_fields = ('profile__username', 'campaign', 'content', 'tags')
+    ordering = ('-created_date',)
+
+
+# ======================================================================================================================
+@admin.register(Engagement)
+class EngagementAdmin(admin.ModelAdmin):
+    list_display = (
+        'post',
+        'user',
+        'type',
+        'content',
+        'created_date',
+    )
+    list_filter = ('type', 'created_date')
+    search_fields = ('user', 'post__content', 'content')
     ordering = ('-created_date',)
 # ======================================================================================================================

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import FacebookProfile, FacebookPost
+from .models import FacebookProfile, FacebookPost, FacebookEngagement
 
 # ======================================================================================================================
 class FacebookProfileSerializer(serializers.ModelSerializer):
@@ -18,7 +18,6 @@ class FacebookProfileSerializer(serializers.ModelSerializer):
             'updated_date',
         ]
 
-
 # ======================================================================================================================
 class FacebookPostSerializer(serializers.ModelSerializer):
     profile = FacebookProfileSerializer(read_only=True)
@@ -35,5 +34,20 @@ class FacebookPostSerializer(serializers.ModelSerializer):
             'tags',
             'created_date',
             'updated_date',
+        ]
+
+# ======================================================================================================================
+class FacebookEngagementSerializer(serializers.ModelSerializer):
+    post = FacebookPostSerializer(read_only=True)
+
+    class Meta:
+        model = FacebookEngagement
+        fields = [
+            'id',
+            'post',
+            'user',
+            'type',
+            'content',
+            'created_date',
         ]
 # ======================================================================================================================

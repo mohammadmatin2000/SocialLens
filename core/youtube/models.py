@@ -41,5 +41,23 @@ class YouTubeVideoModel(models.Model):
     updated_date = models.DateTimeField(default=timezone.now, verbose_name="تاریخ بروزرسانی")
 
     def __str__(self):
-        return f"{self.channel.name} - {self.title}"
+        return f"{self.title}"
+# ======================================================================================================================
+class YouTubeEngagement(models.Model):
+    TYPE_CHOICES = [
+        ('like', 'Like'),
+        ('comment', 'Comment'),
+        ('share', 'Share'),
+        ('view', 'View'),
+        ('save', 'Save'),
+    ]
+
+    video = models.ForeignKey(YouTubeVideoModel, on_delete=models.CASCADE, related_name='engagements')
+    user = models.CharField(max_length=255, verbose_name="کاربر")  # یا user_id اگر سیستم کاربری داشته باشی
+    type = models.CharField(max_length=20, choices=TYPE_CHOICES, verbose_name="نوع تعامل")
+    content = models.TextField(blank=True, null=True, verbose_name="محتوا/کامنت")
+    created_date = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return f"{self.user} - {self.type} - {self.video.title}"
 # ======================================================================================================================

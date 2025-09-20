@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TwitterPostModels, TwitterProfileModels
+from .models import TwitterEngagement, TwitterPostModels, TwitterProfileModels
 
 # ======================================================================================================================
 @admin.register(TwitterProfileModels)
@@ -18,7 +18,6 @@ class TwitterProfileAdmin(admin.ModelAdmin):
     search_fields = ('username',)
     ordering = ('-created_date',)
 
-
 # ======================================================================================================================
 @admin.register(TwitterPostModels)
 class TwitterPostAdmin(admin.ModelAdmin):
@@ -32,4 +31,17 @@ class TwitterPostAdmin(admin.ModelAdmin):
     list_filter = ('status', 'platforms')
     search_fields = ('profile__username', 'campaign', 'content', 'tags')
     ordering = ('-created_date',)
+
 # ======================================================================================================================
+@admin.register(TwitterEngagement)
+class TwitterEngagementAdmin(admin.ModelAdmin):
+    list_display = (
+        'post',
+        'user',
+        'type',
+        'content',
+        'created_date',
+    )
+    list_filter = ('type',)
+    search_fields = ('user', 'post__content', 'content')
+    ordering = ('-created_date',)

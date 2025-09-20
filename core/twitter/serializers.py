@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import TwitterProfileModels, TwitterPostModels
+from .models import TwitterProfileModels, TwitterPostModels,TwitterEngagement
 
 # ======================================================================================================================
 class TwitterProfileSerializer(serializers.ModelSerializer):
@@ -33,5 +33,17 @@ class TwitterPostSerializer(serializers.ModelSerializer):
             'tags',
             'created_date',
             'updated_date',
+        ]
+# ======================================================================================================================
+class TwitterEngagementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TwitterEngagement
+        fields = [
+            'id',
+            'post',
+            'user',
+            'type',
+            'content',
+            'created_date',
         ]
 # ======================================================================================================================

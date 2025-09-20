@@ -41,5 +41,26 @@ class FacebookPost(models.Model):
     updated_date = models.DateTimeField(default=timezone.now, verbose_name="تاریخ بروزرسانی")
 
     def __str__(self):
-        return f"{self.profile.name} - {self.campaign}"
+        return f"{self.campaign}"
+# ======================================================================================================================
+class FacebookEngagement(models.Model):
+    ENGAGEMENT_TYPES = [
+        ("like", "لایک"),
+        ("comment", "کامنت"),
+        ("share", "اشتراک‌گذاری"),
+        ("save", "ذخیره"),
+        ("view", "بازدید"),
+    ]
+
+    post = models.ForeignKey(
+        FacebookPost,
+        on_delete=models.CASCADE,
+        related_name="engagements",
+        verbose_name="پست"
+    )
+    user = models.CharField(max_length=255, verbose_name="کاربر")  # نام کاربری یا شناسه
+    type = models.CharField(max_length=20, choices=ENGAGEMENT_TYPES, verbose_name="نوع تعامل")
+    content = models.TextField(blank=True, null=True, verbose_name="محتوای تعامل (مثلا متن کامنت)")
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name="زمان تعامل")
+
 # ======================================================================================================================

@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-
 # ======================================================================================================================
 class InstagramProfile(models.Model):
     # نام کاربری
@@ -19,8 +18,6 @@ class InstagramProfile(models.Model):
 
     def __str__(self):
         return self.username
-
-
 # ======================================================================================================================
 class InstagramPost(models.Model):
     STATUS_CHOICES = [
@@ -30,7 +27,14 @@ class InstagramPost(models.Model):
         ('failed', 'ناموفق'),
     ]
 
-    profile = models.ForeignKey(InstagramProfile, on_delete=models.CASCADE, related_name='posts', verbose_name="پروفایل",null=True,blank=True)
+    profile = models.ForeignKey(
+        InstagramProfile,
+        on_delete=models.CASCADE,
+        related_name='posts',
+        verbose_name="پروفایل",
+        null=True,
+        blank=True
+    )
     campaign = models.CharField(max_length=255, verbose_name="کمپین", default="بدون نام")
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft', verbose_name="وضعیت")
     content = models.TextField(verbose_name="متن پست", default="بدون محتوا")
@@ -41,5 +45,29 @@ class InstagramPost(models.Model):
     updated_date = models.DateTimeField(default=timezone.now, verbose_name="تاریخ بروزرسانی")
 
     def __str__(self):
-        return f"{self.profile.username} - {self.campaign}"
+        return f"{self.profile.username if self.profile else '---'} - {self.campaign}"
+# ======================================================================================================================
+class Engagement(models.Model):
+    ENGAGEMENT_TYPES = [
+        ("like", "لایک"),
+        ("comment", "کامنت"),
+        ("share", "اشتراک‌گذاری"),
+        ("save", "ذخیره"),
+        ("view", "بازدید"),
+    ]
+
+    post = models.ForeignKey(
+        InstagramPost,
+        on_delete=models.CASCADE,
+        related_name="engagements",
+        verbose_name="پست"
+    )
+    user = models.CharField(max_length=255, verbose_name="کاربر")  # مثلا اسم یا یوزرنیم
+    type = models.CharField(max_length=20, choices=ENGAGEMENT_TYPES, verbose_name="نوع تعامل")
+    content = models.TextField(blank=True, null=True, verbose_name="محتوای تعامل (مثلا متن کامنت)")
+    created_date = models.DateTimeField(auto_now_add=True, verbose_name="زمان تعامل")
+    updated_date = models.DateTimeField(auto_now=True, verbose_name="<UNK> <UNK>")
+
+    def __str__(self):
+        return f"{self.user} - {self.get_type_display()} روی {self.post}"
 # ======================================================================================================================

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import YouTubeChannelModel, YouTubeVideoModel
+from .models import YouTubeChannelModel, YouTubeVideoModel,YouTubeEngagement
 
 # ======================================================================================================================
 class YouTubeChannelSerializer(serializers.ModelSerializer):
@@ -35,5 +35,17 @@ class YouTubeVideoSerializer(serializers.ModelSerializer):
             'tags',
             'created_date',
             'updated_date',
+        ]
+# ======================================================================================================================
+class YouTubeEngagementSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = YouTubeEngagement
+        fields = [
+            'id',
+            'video',
+            'user',
+            'type',
+            'content',
+            'created_date',
         ]
 # ======================================================================================================================
