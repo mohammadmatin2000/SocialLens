@@ -36,6 +36,8 @@ class TwitterPostSerializer(serializers.ModelSerializer):
         ]
 # ======================================================================================================================
 class TwitterEngagementSerializer(serializers.ModelSerializer):
+    post = TwitterPostSerializer(read_only=True)
+
     class Meta:
         model = TwitterEngagement
         fields = [
@@ -46,4 +48,5 @@ class TwitterEngagementSerializer(serializers.ModelSerializer):
             'content',
             'created_date',
         ]
+
 # ======================================================================================================================

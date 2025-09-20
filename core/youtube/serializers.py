@@ -38,6 +38,7 @@ class YouTubeVideoSerializer(serializers.ModelSerializer):
         ]
 # ======================================================================================================================
 class YouTubeEngagementSerializer(serializers.ModelSerializer):
+    video = YouTubeVideoSerializer(read_only=True)
     class Meta:
         model = YouTubeEngagement
         fields = [

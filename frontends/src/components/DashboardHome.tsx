@@ -22,8 +22,6 @@ export function DashboardHome() {
 
   const renderSection = () => {
     switch (currentSection) {
-      case "overview":
-        return <OverviewSection />;
       case "posts":
         return <PostsSection />;
       case "analytics":

@@ -11,6 +11,6 @@ class TwitterPostViewSet(viewsets.ModelViewSet):
     serializer_class = TwitterPostSerializer
 # ======================================================================================================================
 class TwitterEngagementViewSet(viewsets.ReadOnlyModelViewSet):
-    queryset = TwitterEngagement.objects.all()
+    queryset = TwitterEngagement.objects.select_related("post", "post__profile").all().order_by("-created_date")
     serializer_class = TwitterEngagementSerializer
 # ======================================================================================================================

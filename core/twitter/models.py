@@ -17,7 +17,7 @@ class TwitterProfileModels(models.Model):
     updated_date = models.DateTimeField(default=timezone.now, verbose_name="تاریخ بروزرسانی")
 
     def __str__(self):
-        return self
+        return self.username
 
 # ======================================================================================================================
 class TwitterPostModels(models.Model):

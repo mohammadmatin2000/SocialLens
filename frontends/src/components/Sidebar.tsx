@@ -17,7 +17,6 @@ import { Button } from "@/components/ui/button";
 
 const navItems = [
   { key: "dashboard", label: "Dashboard", icon: Home },
-  { key: "overview", label: "Overview", icon: Eye },
   { key: "posts", label: "Posts", icon: Calendar },
   { key: "analytics", label: "Analytics", icon: BarChart2 },
   { key: "engagement", label: "Engagement", icon: MessageCircle },
