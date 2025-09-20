@@ -31,21 +31,21 @@ export function UsersSection() {
         setLoading(false);
       })
       .catch((err) => {
-        console.error("Failed to fetch users:", err);
+        console.error("دریافت کاربران ناموفق بود:", err);
         setLoading(false);
       });
   }, []);
 
   const handleAdd = () => {
-    // منطق Invite User اینجا قرار میگیره
+    // منطق دعوت کاربر اینجا قرار می‌گیرد
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>در حال بارگذاری...</div>;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold">User Management</h2>
+        <h2 className="text-xl font-bold">مدیریت کاربران</h2>
       </div>
       <div className="grid gap-4">
         {users.map((user) => (
@@ -62,7 +62,7 @@ export function UsersSection() {
                       : "text-red-600"
                   }
                 >
-                  {user.is_active ? "Active" : "Inactive"}
+                  {user.is_active ? "فعال" : "غیرفعال"}
                 </span>
               </CardTitle>
             </CardHeader>

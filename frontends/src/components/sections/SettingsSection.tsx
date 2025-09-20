@@ -6,14 +6,14 @@ import { ThemeToggler } from "../ThemeToggler";
 export function SettingsSection() {
   return (
     <div>
-      <h2 className="text-xl font-bold mb-6">Settings</h2>
+      <h2 className="text-xl font-bold mb-6">تنظیمات</h2>
       <Card>
         <CardHeader>
-          <CardTitle>Appearance</CardTitle>
+          <CardTitle>ظاهر</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-4">
-            <span>Theme</span>
+            <span>:تم</span>
             <ThemeToggler />
           </div>
         </CardContent>

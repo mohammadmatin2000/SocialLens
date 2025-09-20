@@ -12,7 +12,7 @@ schema_view = get_schema_view(
     openapi.Info(
         title="Flower Shop API",
         default_version="v1",
-        description="مستندات API برای فروشگاه گل",
+        description="مستندات API مدیریت شبکه مجازی",
     ),
     public=True,
     permission_classes=(permissions.AllowAny,),

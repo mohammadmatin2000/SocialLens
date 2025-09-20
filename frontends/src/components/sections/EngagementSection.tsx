@@ -15,22 +15,22 @@ type Engagement = {
 
 // 🛠️ تابع کمکی برای نمایش متن پست
 function getPostContent(e: any): string {
-  if (!e) return "نداره";
+  if (!e) return "ندارد";
 
   // 📌 برای فیسبوک / اینستاگرام / توییتر
   if (e.post) {
     if (typeof e.post === "object") {
-      return e.post.content ?? e.post.text ?? "نداره";
+      return e.post.content ?? e.post.text ?? "ندارد";
     }
     return String(e.post);
   }
 
   // 📌 برای یوتیوب
   if (e.video) {
-    return e.video.description ?? e.video.title ?? "نداره";
+    return e.video.description ?? e.video.title ?? "ندارد";
   }
 
-  return "نداره";
+  return "ندارد";
 }
 
 export function EngagementSection() {
@@ -81,17 +81,17 @@ export function EngagementSection() {
         setLoading(false);
       })
       .catch(err => {
-        console.error("Failed to fetch engagements:", err);
+        console.error("دریافت تعاملات ناموفق بود:", err);
         setLoading(false);
       });
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>در حال بارگذاری...</div>;
 
   return (
     <div>
       <h2 className="text-xl font-bold mb-6">
-        All Platforms Recent Engagements
+        آخرین تعاملات در تمام پلتفرم‌ها
       </h2>
       <div className="grid gap-4">
         {engagements.map(e => (
@@ -104,7 +104,7 @@ export function EngagementSection() {
                 <span className="text-xs text-muted-foreground">
                   {e.created_date
                     ? new Date(e.created_date).toLocaleString()
-                    : "No Date"}
+                    : "ندارد"}
                 </span>
               </CardTitle>
             </CardHeader>
@@ -115,7 +115,7 @@ export function EngagementSection() {
                     ? e.user
                     : JSON.stringify(e.user)}
                 </span>{" "}
-                {e.type.toLowerCase()}d on post:{" "}
+                {e.type.toLowerCase()} شده روی پست:{" "}
                 <span className="italic">{getPostContent(e)}</span>
               </div>
             </CardContent>

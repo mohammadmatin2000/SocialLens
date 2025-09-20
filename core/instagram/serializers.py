@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import InstagramProfile, InstagramPost, Engagement
-
 # ======================================================================================================================
 class InstagramProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,8 +16,6 @@ class InstagramProfileSerializer(serializers.ModelSerializer):
             'created_date',
             'updated_date',
         ]
-
-
 # ======================================================================================================================
 class InstagramPostSerializer(serializers.ModelSerializer):
     profile = InstagramProfileSerializer(read_only=True)
@@ -36,10 +33,8 @@ class InstagramPostSerializer(serializers.ModelSerializer):
             'created_date',
             'updated_date',
         ]
-
-
 # ======================================================================================================================
-class EngagementSerializer(serializers.ModelSerializer):
+class InstagramEngagementSerializer(serializers.ModelSerializer):
     post = InstagramPostSerializer(read_only=True)
 
     class Meta:
@@ -51,5 +46,20 @@ class EngagementSerializer(serializers.ModelSerializer):
             'type',
             'content',
             'created_date',
+        ]
+# ======================================================================================================================
+class InstagramAnalyticsSerializer(serializers.ModelSerializer):
+    total_followers = serializers.IntegerField(source='followers_count',read_only=True)
+    total_likes = serializers.IntegerField(read_only=True)
+    total_comments = serializers.IntegerField(read_only=True)
+    total_shares = serializers.IntegerField(read_only=True)
+    total_saves = serializers.IntegerField(read_only=True)
+    total_views = serializers.IntegerField(read_only=True)
+
+    class Meta:
+        model = InstagramProfile
+        fields = [
+            'id', 'username',
+            'total_followers', 'total_likes', 'total_comments', 'total_shares', 'total_saves', 'total_views'
         ]
 # ======================================================================================================================

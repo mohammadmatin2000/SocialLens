@@ -1,6 +1,5 @@
 from rest_framework import serializers
 from .models import TwitterProfileModels, TwitterPostModels,TwitterEngagement
-
 # ======================================================================================================================
 class TwitterProfileSerializer(serializers.ModelSerializer):
     class Meta:
@@ -48,5 +47,20 @@ class TwitterEngagementSerializer(serializers.ModelSerializer):
             'content',
             'created_date',
         ]
+# ======================================================================================================================
+class TwitterAnalyticsSerializer(serializers.ModelSerializer):
+    total_followers = serializers.IntegerField(source='followers_count', read_only=True)
+    total_likes = serializers.IntegerField(read_only=True)
+    total_comments = serializers.IntegerField(read_only=True)
+    total_shares = serializers.IntegerField(read_only=True)
+    total_saves = serializers.IntegerField(read_only=True)
+    total_views = serializers.IntegerField(read_only=True)
 
+    class Meta:
+        model = TwitterProfileModels
+        fields = [
+            'id', 'username',
+            'total_followers', 'total_likes', 'total_comments',
+            'total_shares', 'total_saves', 'total_views'
+        ]
 # ======================================================================================================================

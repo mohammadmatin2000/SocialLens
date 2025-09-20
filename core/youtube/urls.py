@@ -1,9 +1,14 @@
 from rest_framework.routers import DefaultRouter
-from .views import YouTubeChannelViewSet, YouTubeVideoViewSet,YouTubeEngagementViewSet
+from django.urls import path, include
+from .views import YouTubeChannelViewSet, YouTubeVideoViewSet,YouTubeEngagementViewSet,YouTubeAnalyticsView
 # ======================================================================================================================
 router = DefaultRouter()
 router.register(r'channels', YouTubeChannelViewSet, basename='channel')
 router.register(r'videos', YouTubeVideoViewSet, basename='video')
 router.register(r'engagements', YouTubeEngagementViewSet, basename='engagement')
 # ======================================================================================================================
-urlpatterns = router.urls
+urlpatterns = [
+    path('', include(router.urls)),
+    path('AnalyticsView/', YouTubeAnalyticsView.as_view(), name='instagram-dashboard'),
+]
+# ======================================================================================================================
