@@ -39,12 +39,6 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="hidden sm:flex items-center gap-2 text-sm text-muted-foreground">
-              <span>Last updated: just now</span>
-            </div>
-            <ThemeToggler />
-          </div>
         </header>
         <section className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 bg-muted/30">
           <DashboardHome section={selectedSection} />

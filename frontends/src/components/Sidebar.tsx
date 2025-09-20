@@ -81,10 +81,7 @@ export function Sidebar({ selected, onSelect, isOpen, onClose }: SidebarProps) {
           ))}
         </nav>
 
-        {/* فوتر سایدبار */}
-        <div className="p-4 text-xs text-muted-foreground text-center border-t">
-          &copy; {new Date().getFullYear()} Social Media Dashboard
-        </div>
+
       </aside>
     </>
   );
