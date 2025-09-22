@@ -20,8 +20,6 @@ const navItems = [
   { key: "posts", label: "Posts", icon: Calendar },
   { key: "analytics", label: "Analytics", icon: BarChart2 },
   { key: "engagement", label: "Engagement", icon: MessageCircle },
-  { key: "campaigns", label: "Campaigns", icon: Target },
-  { key: "customers", label: "Customers", icon: UserCheck },
   { key: "users", label: "Users", icon: Users },
   { key: "settings", label: "Settings", icon: Settings },
 ];

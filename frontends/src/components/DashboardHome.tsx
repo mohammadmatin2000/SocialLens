@@ -1,18 +1,15 @@
 "use client";
 import { useState } from "react";
 import { DashboardSection } from "./sections/DashboardSection";
-import { OverviewSection } from "./sections/OverviewSection";
 import { PostsSection } from "./sections/PostsSection";
 import { AnalyticsSection } from "./sections/AnalyticsSection";
 import { EngagementSection } from "./sections/EngagementSection";
-import { CampaignsSection } from "./sections/CampaignsSection";
-import { CustomersSection } from "./sections/CustomersSection";
 import { UsersSection } from "./sections/UsersSection";
 import { SettingsSection } from "./sections/SettingsSection";
 import { Sidebar } from "./Sidebar";
 
 export function DashboardHome() {
-  const [currentSection, setCurrentSection] = useState("dashboard");
+  const [currentSection, setCurrentSection] = useState("داشبورد");
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleSelect = (key: string) => {
@@ -22,19 +19,15 @@ export function DashboardHome() {
 
   const renderSection = () => {
     switch (currentSection) {
-      case "posts":
+      case "پست‌ها":
         return <PostsSection />;
-      case "analytics":
+      case "تحلیل‌ها":
         return <AnalyticsSection />;
-      case "engagement":
+      case "تعامل‌ها":
         return <EngagementSection />;
-      case "campaigns":
-        return <CampaignsSection />;
-      case "customers":
-        return <CustomersSection />;
-      case "users":
+      case "مشتریان":
         return <UsersSection />;
-      case "settings":
+      case "تنظیمات":
         return <SettingsSection />;
       default:
         return <DashboardSection onSelect={handleSelect} />;
