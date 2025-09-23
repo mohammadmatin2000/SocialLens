@@ -19,7 +19,6 @@ export default function NewPostPage() {
   const router = useRouter();
 
   const [content, setContent] = useState("");
-  const [campaign, setCampaign] = useState("");
   const [tags, setTags] = useState("");
   const [platform, setPlatform] = useState("Instagram");
   const [status, setStatus] = useState("draft");
@@ -32,7 +31,6 @@ export default function NewPostPage() {
 
     const payload = {
       content,
-      campaign,
       tags: tags.split(",").map(t => t.trim()),
       platforms: [platform],
       status,
@@ -52,7 +50,6 @@ export default function NewPostPage() {
         throw new Error(text || "خطا در ایجاد پست");
       }
 
-      // بعد از موفقیت، به صفحه لیست پست‌ها برو
       router.push("/"); // مسیر صفحه لیست پست‌ها، تغییر بده مطابق پروژه‌ی خودت
     } catch (err: any) {
       setError(err.message);
@@ -91,17 +88,6 @@ export default function NewPostPage() {
           onChange={e => setContent(e.target.value)}
           className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none h-24"
           placeholder="متن پست را اینجا وارد کنید..."
-        />
-      </div>
-
-      {/* کمپین */}
-      <div className="flex flex-col gap-2 mb-4">
-        <label className="font-medium">کمپین</label>
-        <input
-          value={campaign}
-          onChange={e => setCampaign(e.target.value)}
-          className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          placeholder="نام کمپین"
         />
       </div>
 

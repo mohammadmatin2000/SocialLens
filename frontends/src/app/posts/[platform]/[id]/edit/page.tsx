@@ -19,11 +19,10 @@ type EditPostPageProps = {
 
 export default function EditPostPage({ params }: EditPostPageProps) {
   const router = useRouter();
-  const platform = params.platform; // Twitter, Instagram, ...
+  const platform = params.platform;
   const postId = params.id;
 
   const [content, setContent] = useState("");
-  const [campaign, setCampaign] = useState("");
   const [tags, setTags] = useState("");
   const [status, setStatus] = useState("draft");
   const [loading, setLoading] = useState(true);
@@ -39,7 +38,6 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         if (!res.ok) throw new Error("خطا در دریافت اطلاعات پست");
         const data = await res.json();
         setContent(data.content || "");
-        setCampaign(data.campaign || "");
         setTags((data.tags || []).join(",")); // تگ‌ها رو به شکل رشته با کاما
         setStatus(data.status || "draft");
       } catch (err) {
@@ -60,10 +58,9 @@ export default function EditPostPage({ params }: EditPostPageProps) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           content,
-          campaign,
           tags: tags
-            .split(/[,#]/)       // جدا کردن با کاما یا #
-            .map(t => t.trim())  // حذف فاصله اضافی
+            .split(/[,#]/)
+            .map(t => t.trim())
             .filter(t => t !== ""),
           status,
         }),
@@ -102,17 +99,6 @@ export default function EditPostPage({ params }: EditPostPageProps) {
           onChange={e => setContent(e.target.value)}
           className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none h-24"
           placeholder="متن پست را وارد کنید..."
-        />
-      </div>
-
-      {/* کمپین */}
-      <div className="flex flex-col gap-2 mb-4">
-        <label className="font-medium">کمپین</label>
-        <input
-          value={campaign}
-          onChange={e => setCampaign(e.target.value)}
-          className="p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-          placeholder="نام کمپین"
         />
       </div>
 

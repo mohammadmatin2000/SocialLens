@@ -16,12 +16,12 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
-  { key: "dashboard", label: "Dashboard", icon: Home },
-  { key: "posts", label: "Posts", icon: Calendar },
-  { key: "analytics", label: "Analytics", icon: BarChart2 },
-  { key: "engagement", label: "Engagement", icon: MessageCircle },
-  { key: "users", label: "Users", icon: Users },
-  { key: "settings", label: "Settings", icon: Settings },
+  { key: "dashboard", label: "داشبورد", icon: Home },
+  { key: "posts", label: "پست‌ها", icon: Calendar },
+  { key: "analytics", label: "تحلیل‌ها", icon: BarChart2 },
+  { key: "engagement", label: "تعامل‌ها", icon: MessageCircle },
+  { key: "users", label: "کاربرها", icon: Users },
+  { key: "settings", label: "تنظیمات", icon: Settings },
 ];
 
 interface SidebarProps {

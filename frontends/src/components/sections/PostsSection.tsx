@@ -131,12 +131,9 @@ export function PostsSection() {
                         <Card key={post.id}>
                             <CardHeader>
                                 <div className="flex items-center justify-between">
-                                    <div className="flex flex-col gap-1">
-                                        <div className="flex gap-2 items-center">
-                                            <Calendar className="h-4 w-4 text-muted-foreground"/>
-                                            <span>{new Date(post.scheduledAt).toLocaleString("fa-IR")}</span>
-                                        </div>
-                                        <div className="text-sm font-medium">کمپین: {post.campaign}</div>
+                                    <div className="flex gap-2 items-center">
+                                        <Calendar className="h-4 w-4 text-muted-foreground"/>
+                                        <span>{new Date(post.scheduledAt).toLocaleString("fa-IR")}</span>
                                     </div>
                                     <span className={`text-xs px-3 py-1 rounded-full font-medium ${
                                         post.status === "scheduled" ? "bg-blue-100 text-blue-800" :
